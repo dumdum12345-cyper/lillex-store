@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Lillex Communication | Premium Samsung Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="siteHeader">
+        <div class="nav-container">
+            <div class="logo" id="navLogo"><span class="logo-l">L</span>illex<span class="logo-dot">.</span></div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Search Samsung models...">
+                </div>
+            </div>
+            <div class="nav-actions">
+                <div class="user-welcome hidden" id="userWelcome">
+                    <div class="avatar-chip" id="authNavBtn">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span id="userNameDisplay">Me</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size:0.6rem;"></i>
+                    </div>
+                </div>
+                <button class="nav-login-btn hidden" id="authNavBtnGuest">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i><span>Sign In</span>
+                </button>
+                <button class="nav-logout-btn hidden" id="globalLogoutBtn" title="Sign Out">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+                <div class="cart-icon-container" id="cartIcon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <div class="cart-count hidden" id="cartCount">0</div>
+                </div>
+                <button class="hamburger" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="mobileSearchInput" placeholder="Search Samsung models...">
+        </div>
+    </header>
+
+    <div id="toastNotification" class="toast-popup hidden"></div>
+
+    <!-- TRUST BANNER -->
+    <section class="trust-banner-wrapper" id="trustBanner">
+        <div class="trust-scroll">
+            <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> 7-Day Elite Hardware Warranty</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-rotate-left"></i> Hassle-Free Refunds</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-truck-fast"></i> Lagos-Wide Delivery</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-lock"></i> Secure Checkout</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> 7-Day Elite Hardware Warranty</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-rotate-left"></i> Hassle-Free Refunds</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-truck-fast"></i> Lagos-Wide Delivery</span>
+            <span class="trust-sep">·</span>
+            <span class="trust-item"><i class="fa-solid fa-lock"></i> Secure Checkout</span>
+        </div>
+    </section>
+
+    <!-- AUTH SECTION -->
+    <div id="authSection" class="auth-wrapper hidden">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <div class="auth-logo"><span class="logo-l">L</span>illex<span class="logo-dot">.</span></div>
+                <p class="auth-tagline">Nigeria's Premium Samsung Hub</p>
+            </div>
+            <div id="authErrorMsg" class="auth-error hidden"></div>
+
+            <button class="google-btn" id="googleSignInBtn">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Continue with Google
+            </button>
+
+            <div class="auth-divider"><span>or continue with email</span></div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Sign In</button>
+                <button class="auth-tab" data-tab="register">Create Account</button>
+            </div>
+
+            <form id="authForm">
+                <div class="form-group hidden" id="nameField">
+                    <label>Full Name</label>
+                    <div class="input-wrap"><i class="fa-solid fa-user"></i><input type="text" id="authName" placeholder="John Doe"></div>
+                </div>
+                <div class="form-group hidden" id="phoneField">
+                    <label>Phone Number</label>
+                    <div class="input-wrap"><i class="fa-solid fa-phone"></i><input type="tel" id="authPhone" placeholder="+234 800 000 0000"></div>
+                </div>
+                <div class="form-group hidden" id="addressField">
+                    <label>Delivery Address <span style="color:#666;">(Lagos)</span></label>
+                    <div class="input-wrap"><i class="fa-solid fa-location-dot"></i><input type="text" id="authAddress" placeholder="Street, Area, City"></div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrap"><i class="fa-solid fa-envelope"></i><input type="email" id="authEmail" placeholder="you@domain.com" required></div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="authPassword" placeholder="••••••••" required>
+                        <button type="button" class="pw-toggle" id="pwToggleBtn"><i class="fa-solid fa-eye-slash"></i></button>
+                    </div>
+                </div>
+                <button type="submit" class="solid-btn auth-btn" id="authSubmitBtn">Sign In</button>
+            </form>
+            <p class="auth-terms">By continuing, you agree to Lillex's <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+        </div>
+    </div>
+
+    <!-- COMPLETE PROFILE MODAL (for Google users missing address) -->
+    <div id="completeProfileModal" class="custom-modal-overlay hidden">
+        <div class="custom-modal-box">
+            <div class="complete-profile-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h3>Complete Your Profile</h3>
+            <p style="color:#888; font-size:0.85rem; margin:0.5rem 0 1.2rem;">We need a few more details so we can deliver your order.</p>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <div class="input-wrap"><i class="fa-solid fa-phone"></i><input type="tel" id="completePhone" placeholder="+234 800 000 0000"></div>
+            </div>
+            <div class="form-group">
+                <label>Delivery Address <span style="color:#666;">(Lagos only)</span></label>
+                <div class="input-wrap"><i class="fa-solid fa-location-dot"></i><input type="text" id="completeAddress" placeholder="Street, Area, City"></div>
+            </div>
+            <div id="completeProfileError" class="auth-error hidden"></div>
+            <button class="solid-btn" id="saveCompleteProfileBtn" style="width:100%; margin-top:0.5rem; padding:0.85rem;">
+                Save & Continue
+            </button>
+        </div>
+    </div>
+
+    <!-- STORE SECTION -->
+    <div id="storeSection" class="store-container">
+        <div class="mobile-filter-bar">
+            <button class="filter-toggle-btn" id="mobileFilterBtn"><i class="fa-solid fa-sliders"></i> Filters</button>
+            <div class="active-filter-chips" id="activeFilterChips"></div>
+        </div>
+
+        <aside class="sidebar" id="sidebarDrawer">
+            <div class="sidebar-overlay" id="sidebarOverlay"></div>
+            <div class="sidebar-inner">
+                <div class="sidebar-top">
+                    <h3 class="sidebar-title">Filter</h3>
+                    <button class="sidebar-close-btn" id="sidebarCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="filter-section" id="filterSectionWrapper">
+                    <h4 class="filter-label">Series</h4>
+                </div>
+                <div class="contact-sidebar-widget">
+                    <div class="contact-row"><i class="fa-solid fa-location-dot"></i><span>52 Idowu Lane, Ikeja, Lagos</span></div>
+                    <div class="contact-row"><i class="fa-solid fa-phone"></i><a href="tel:08132918894">08132918894</a></div>
+                    <div class="contact-row"><i class="fa-solid fa-envelope"></i><a href="mailto:obelilian52@gmail.com">obelilian52@gmail.com</a></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="products-area">
+            <div class="products-header">
+                <span class="products-count" id="productsCount">Loading...</span>
+                <select id="sortSelect" class="sort-select">
+                    <option value="default">Featured</option>
+                    <option value="price-asc">Price: Low → High</option>
+                    <option value="price-desc">Price: High → Low</option>
+                    <option value="name-asc">Name A → Z</option>
+                </select>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <div class="loading-state"><div class="spinner"></div><p>Loading products...</p></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- CHECKOUT -->
+    <div id="checkoutFormSection" class="checkout-form-container hidden">
+        <div class="checkout-form-box">
+            <div class="checkout-top">
+                <button class="back-btn" id="cancelCheckoutBtn"><i class="fa-solid fa-arrow-left"></i></button>
+                <h2>Checkout</h2>
+                <div></div>
+            </div>
+            <div class="checkout-steps">
+                <div class="step active"><span>1</span> Order</div>
+                <div class="step-line"></div>
+                <div class="step"><span>2</span> Payment</div>
+                <div class="step-line"></div>
+                <div class="step"><span>3</span> Done</div>
+            </div>
+            <div class="checkout-summary" id="checkoutSummaryItems"></div>
+            <form id="orderCheckoutFinalForm">
+                <div class="checkout-form-body">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div class="input-wrap"><i class="fa-solid fa-envelope"></i><input type="email" id="checkoutEmail" required readonly></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <div class="input-wrap"><i class="fa-solid fa-location-dot"></i><input type="text" id="checkoutAddress" required readonly></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <div class="payment-method-grid" id="paymentMethodGrid">
+                            <label class="payment-option active" data-method="Direct Naira Bank Transfer">
+                                <input type="radio" name="payMethod" value="Direct Naira Bank Transfer" checked>
+                                <i class="fa-solid fa-building-columns"></i>
+                                <span>Bank Transfer</span>
+                            </label>
+                            <label class="payment-option" data-method="Cash on Delivery">
+                                <input type="radio" name="payMethod" value="Cash on Delivery">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <span>Cash on Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="bankDetailsArea" class="bank-details-box">
+                        <div class="bank-header"><i class="fa-solid fa-university"></i> Transfer to:</div>
+                        <div class="account-card">
+                            <div class="account-row"><span>Bank</span><strong>First Bank of Nigeria</strong></div>
+                            <div class="account-row"><span>Account Name</span><strong>Lillex Communication</strong></div>
+                            <div class="account-row acc-num-row">
+                                <span>Account No.</span>
+                                <strong>3012345678</strong>
+                                <button type="button" class="copy-btn" id="copyAccBtn"><i class="fa-regular fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:1rem; margin-bottom:0;">
+                            <label>Upload Payment Receipt</label>
+                            <div class="file-upload-zone" id="fileUploadZone">
+                                <input type="file" id="checkoutProofFile" accept="image/*">
+                                <div class="file-upload-inner"><i class="fa-solid fa-cloud-arrow-up"></i><span>Tap to upload receipt</span></div>
+                                <div class="file-preview hidden" id="filePreviewArea">
+                                    <img id="filePreviewImg" src="" alt="Receipt">
+                                    <button type="button" class="remove-file-btn" id="removeFileBtn"><i class="fa-solid fa-xmark"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions <span style="color:#666;">(optional)</span></label>
+                        <div class="input-wrap textarea-wrap"><i class="fa-solid fa-note-sticky"></i>
+                            <textarea id="checkoutInstructions" rows="3" placeholder="e.g. Call before delivery, deliver after 2PM..."></textarea>
+                        </div>
+                    </div>
+                    <div class="checkout-total-bar">
+                        <span>Total</span>
+                        <span class="checkout-total-amount" id="checkoutTotalDisplay">₦0</span>
+                    </div>
+                    <button type="submit" class="solid-btn" style="width:100%; margin-top:1rem; padding:1rem; font-size:1rem;">
+                        <i class="fa-solid fa-shield-halved"></i> Place Order Securely
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div id="successSplashModal" class="success-overlay hidden">
+        <div class="success-box">
+            <div class="success-anim">
+                <div class="success-ring"></div>
+                <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <h2>Order Confirmed!</h2>
+            <p>Your order has been received and queued for processing. We'll contact you shortly.</p>
+            <button class="solid-btn" id="closeSuccessSplashBtn" style="width:100%; margin-top:1.5rem; padding:0.9rem;">Back to Store</button>
+        </div>
+    </div>
+
+    <!-- PRICE EDIT MODAL -->
+    <div id="priceEditModal" class="custom-modal-overlay hidden">
+        <div class="custom-modal-box">
+            <h3>Update Price</h3>
+            <p id="priceEditTargetName" style="font-size:0.9rem; color:#888; margin:0.5rem 0 1rem;"></p>
+            <div class="form-group">
+                <label>New Base Price (₦)</label>
+                <div class="input-wrap"><i class="fa-solid fa-naira-sign"></i><input type="number" id="customNewPriceInput" required></div>
+            </div>
+            <div class="modal-actions">
+                <button class="outline-btn" id="cancelPriceModalBtn">Cancel</button>
+                <button class="solid-btn" id="savePriceModalBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE MODAL -->
+    <div id="deleteConfirmModal" class="custom-modal-overlay hidden">
+        <div class="custom-modal-box danger-modal">
+            <div class="danger-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>Delete Product?</h3>
+            <p id="deleteModalMessage" style="font-size:0.85rem; margin:1rem 0; color:#ccc;"></p>
+            <div class="modal-actions">
+                <button class="outline-btn" id="cancelDeleteModalBtn">Cancel</button>
+                <button class="solid-btn danger-btn" id="confirmDeleteModalBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOMER DASHBOARD -->
+    <div id="customerDashboardSection" class="dashboard-container hidden">
+        <div class="dashboard-header">
+            <button class="back-btn" id="backToStoreFromDashBtn"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2>My Account</h2>
+            <div></div>
+        </div>
+        <div class="dashboard-tabs">
+            <button class="dash-tab active" data-panel="dashProfilePanel">Profile</button>
+            <button class="dash-tab" data-panel="dashOrdersPanel">My Orders</button>
+        </div>
+        <div class="dash-panel active" id="dashProfilePanel">
+            <div class="profile-card">
+                <div class="profile-avatar"><i class="fa-solid fa-circle-user"></i></div>
+                <div class="profile-info-grid">
+                    <div class="profile-info-item"><label>Full Name</label><span id="profName">-</span></div>
+                    <div class="profile-info-item"><label>Email</label><span id="profEmail">-</span></div>
+                    <div class="profile-info-item"><label>Phone</label><span id="profPhone">-</span></div>
+                    <div class="profile-info-item"><label>Delivery Address</label><span id="profAddress">-</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="dash-panel" id="dashOrdersPanel">
+            <div id="customerOrdersHistoryQueue" class="orders-list"></div>
+        </div>
+    </div>
+
+    <!-- ADMIN SECTION -->
+    <div id="adminSection" class="admin-container hidden">
+        <div class="dashboard-header">
+            <button class="back-btn" id="backToStoreFromAdminBtn"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2>Admin Terminal</h2>
+            <div></div>
+        </div>
+        <div class="dashboard-tabs">
+            <button class="dash-tab active" data-panel="adminInventoryPanel">Inventory</button>
+            <button class="dash-tab" data-panel="adminOrdersPanel">Orders</button>
+            <button class="dash-tab" data-panel="adminAddPanel">Add Product</button>
+        </div>
+        <div class="dash-panel active" id="adminInventoryPanel">
+            <div id="adminInventoryList" class="admin-inventory-stream"></div>
+        </div>
+        <div class="dash-panel" id="adminOrdersPanel">
+            <div class="orders-section-head">Pending Orders</div>
+            <div id="adminOrdersQueue"></div>
+            <div class="orders-section-head archived-head"><i class="fa-solid fa-box-archive"></i> Dispatch Log</div>
+            <div id="adminOrdersArchivedHistory" class="archived-history-stream"></div>
+        </div>
+        <div class="dash-panel" id="adminAddPanel">
+            <div class="admin-box">
+                <form id="productManageForm">
+                    <div class="form-group">
+                        <label>Product Model Name</label>
+                        <div class="input-wrap"><i class="fa-solid fa-mobile-screen"></i><input type="text" id="pName" placeholder="e.g. Samsung Galaxy S26 Ultra" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div class="input-wrap select-wrap"><i class="fa-solid fa-layer-group"></i>
+                            <select id="pCategorySelect">
+                                <option value="S Series">S Series</option>
+                                <option value="Note Series">Note Series</option>
+                                <option value="Fold & Flip">Fold & Flip</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Base Price (₦)</label>
+                        <div class="input-wrap"><i class="fa-solid fa-naira-sign"></i><input type="number" id="pPrice" placeholder="e.g. 1500000" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Image</label>
+                        <div class="file-upload-zone" id="adminFileUploadZone">
+                            <input type="file" id="pAssetImageFile" accept="image/*">
+                            <div class="file-upload-inner"><i class="fa-solid fa-cloud-arrow-up"></i><span>Tap to upload image</span></div>
+                            <div class="file-preview hidden" id="adminFilePreviewArea">
+                                <img id="adminFilePreviewImg" src="" alt="Product">
+                                <button type="button" class="remove-file-btn" id="adminRemoveFileBtn"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <div class="input-wrap textarea-wrap"><i class="fa-solid fa-align-left"></i>
+                            <textarea id="pDesc" rows="3" placeholder="Enter specifications..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="solid-btn" style="width:100%; padding:0.9rem;">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="inventoryRowImageFileTrigger" accept="image/*" style="display:none;">
+
+    <!-- CART -->
+    <div id="cartOverlay" class="cart-overlay hidden">
+        <div class="cart-backdrop" id="cartBackdrop"></div>
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h3>My Cart <span class="cart-header-count" id="cartHeaderCount"></span></h3>
+                <button class="close-cart" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cart-items-list" id="cartItemsList"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <span class="neon-text" id="cartTotalDisplay">₦0</span>
+                </div>
+                <button class="solid-btn checkout-btn" id="checkoutBtn">
+                    <i class="fa-solid fa-lock"></i> Secure Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand"><span class="logo-l">L</span>illex<span class="logo-dot">.</span></div>
+            <div class="footer-links"><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Support</a></div>
+            <p class="footer-copy">&copy; 2026 Lillex Communication · 52 Idowu Lane, Ikeja, Lagos</p>
+        </div>
+    </footer>
+
+    <!-- FIREBASE SDK (type="module" not needed — using compat CDN) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
