@@ -23,7 +23,7 @@ const ADMIN_EMAIL = "obelilian52@gmail.com";
 // ==========================================
 // STATE
 // ==========================================
-const categoriesList = ["S Series", "Note Series", "Fold & Flip"];
+const categoriesList = ["S Series", "Note Series", "Fold & Flip", "iPhone Pro", "iPhone Standard"];
 let activeFilters = [...categoriesList];
 let selectedStorageMap = {};
 let transientProofOfPaymentBase64 = "";
@@ -61,13 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
 auth.onAuthStateChanged(async (user) => {
     if (user) {
         currentUser = user;
-        // Load or create Firestore profile
         const ref = db.collection('users').doc(user.uid);
         const snap = await ref.get();
         if (snap.exists) {
             currentUserProfile = snap.data();
         } else {
-            // Brand new user — create profile
             currentUserProfile = {
                 name: user.displayName || "New User",
                 email: user.email,
@@ -80,6 +78,13 @@ auth.onAuthStateChanged(async (user) => {
         }
         syncUserSessionDOM();
         updateCartIconBadge();
+
+        // Always route to store when auth state confirms login
+        const authSection = document.getElementById('authSection');
+        if (!authSection.classList.contains('hidden')) {
+            routeToStore();
+        }
+
         // If Google user with no address, show completion modal
         if (user.providerData[0]?.providerId === 'google.com' && (!currentUserProfile.phone || !currentUserProfile.address)) {
             showCompleteProfileModal();
@@ -89,7 +94,6 @@ auth.onAuthStateChanged(async (user) => {
         currentUserProfile = null;
         syncUserSessionDOM();
     }
-    // Load products (needs auth state settled)
     loadProductsFromFirestore();
 });
 
